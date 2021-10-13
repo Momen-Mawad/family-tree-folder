@@ -1,0 +1,41 @@
+{% extends "family_tree/tree_base.html" %}
+{% load static %}
+
+{% block header_block%}
+<title>عائلة محمود معوض</title>
+{% endblock %}
+
+{% block body_block %}
+{% if user.is_authenticated%}
+
+<div class="container">
+    <h1>{{PersonData.name}}</h1>
+    <h2>Member Count: </h2>
+</div>
+
+<div class="container col-md-8">
+    <div class="list-group">
+        <table class="list-table">
+            <tr>
+                <th>id</th>
+                <th>first</th>
+                <th>second</th>
+                <th>third</th>
+                <th>last</th>
+                <th>pid</th>
+                <th>partner</th>
+                <th>img</th>
+            </tr>
+            {% for i in object_list%}
+            <tr>
+                <td>{{i.name}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+
+    </div>
+
+</div>
+{% endif %}
+
+{% endblock %}
