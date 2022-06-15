@@ -2,14 +2,12 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView, LogoutView
 
-from . import forms
 import os
 # Create your views here.
 
 
 class SignUp(CreateView):
     template_name = os.path.join('accounts', 'signup_page.html')
-    form_class = forms.UserCreateForm
     success_url = reverse_lazy('accounts:login_page')
 
 

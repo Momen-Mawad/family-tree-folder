@@ -1,0 +1,29 @@
+{
+  "name": "مصطفى",
+  "children": [
+    {
+      "name": "محمود",
+      "attributes": {
+        "department": "Production"
+      }
+    },
+    {
+      "name": "ميرفت",
+      "attributes": {
+        "department": "Production"
+      }
+    },
+    {
+      "name": "مؤمن",
+      "attributes": {
+        "department": "Production"
+      }
+    },
+    {
+      "name": "مروة",
+      "attributes": {
+        "department": "Marketing"
+      }
+    }
+  ]
+}

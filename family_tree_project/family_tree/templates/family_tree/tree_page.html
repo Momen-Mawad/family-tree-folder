@@ -3,7 +3,7 @@
 
 {% block header_block%}
     <title>عائلة محمود معوض</title>
-    <script src="{% static 'orgchart.js' %}"></script>
+    <script src="{% static 'echarts.js' %}"></script>
 {% endblock %}
 
 {% block body_block %}
@@ -11,55 +11,124 @@
     <h1>عائلة محمود معوض</h1>
     <h2>Member Count: {{family.members.count }}</h2>
     <div class="grid-item">
-        <div style="width:100%; height:60%;" id="tree"/></div>
+        <div style="width:100%; height:100%;" id="tree"/></div>
     </div>
 {% endblock %}
 
 {% block script_block%}
     <script>
-        OrgChart.templates.myTemplate = Object.assign({}, OrgChart.templates.ana);
 
-        OrgChart.templates.myTemplate.field_0 =
-            '<text class="field_0" style="font-size: 24px;" fill="#ffffff" x="125" y="50" text-anchor="middle">{val}</text>';
-        OrgChart.templates.myTemplate.field_1 =
-            '<text class="field_1" style="font-size: 14px;" fill="#ffffff" x="75" y="80" text-anchor="middle">{val}</text>';
-        OrgChart.templates.myTemplate.field_2 =
-            '<text class="field_2" style="font-size: 14px;" fill="#ffffff" x="125" y="80" text-anchor="middle">{val}</text>';
-        OrgChart.templates.myTemplate.field_3 =
-            '<text class="field_3" style="font-size: 14px;" fill="#ffffff" x="175" y="80" text-anchor="middle">{val}</text>';
+var chartDom = document.getElementById('main');
+var myChart = echarts.init(tree);
+var option;
 
-        OrgChart.templates.ula.field_0 =
-            '<text class="field_0" style="font-size: 24px;" fill="#0000FF" x="125" y="50" text-anchor="middle">{val}</text>';
-        OrgChart.templates.ula.field_1 =
-            '<text class="field_1" style="font-size: 14px;" fill="#0000FF" x="75" y="80" text-anchor="middle">{val}</text>';
-        OrgChart.templates.ula.field_2 =
-            '<text class="field_2" style="font-size: 14px;" fill="#0000FF" x="125" y="80" text-anchor="middle">{val}</text>';
-        OrgChart.templates.ula.field_3 =
-            '<text class="field_3" style="font-size: 14px;" fill="#0000FF" x="175" y="80" text-anchor="middle">{val}</text>';
+const data = {
+  name: 'flare',
+  children: [
+    {
+      name: 'data',
+      children: [
+        {
+          name: 'converters',
+          children: [
+            { name: 'Converters', value: 721 },
+            { name: 'DelimitedTextConverter', value: 4294 }
+          ]
+        },
+        {
+          name: 'DataUtil',
+          value: 3322
+        }
+      ]
+    },
+    {
+      name: 'display',
+      children: [
+        { name: 'DirtySprite', value: 8833 },
+        { name: 'LineSprite', value: 1732 },
+        { name: 'RectSprite', value: 3623 }
+      ]
+    },
+    {
+      name: 'flex',
+      children: [{ name: 'FlareVis', value: 4116 }]
+    },
+    {
+      name: 'query',
+      children: [
+        { name: 'AggregateExpression', value: 1616 },
+        { name: 'And', value: 1027 },
+        { name: 'Arithmetic', value: 3891 },
+        {
+          name: 'methods',
+          children: [
+            { name: 'add', value: 593 },
+            { name: 'and', value: 330 },
+            { name: 'average', value: 287 },
+            { name: 'count', value: 277 },
+            { name: 'distinct', value: 292 },
+          ]
+        },
+        { name: 'Minimum', value: 843 },
+        { name: 'Not', value: 1554 },
+        { name: 'Or', value: 970 },
+        { name: 'Query', value: 13896 },
+      ]
+    },
+    {
+      name: 'scale',
+      children: [
+        { name: 'IScaleMap', value: 2105 },
+        { name: 'LinearScale', value: 1316 },
+        { name: 'LogScale', value: 3151 },
+      ]
+    }
+  ]
+};
 
-        var chart = new OrgChart(document.getElementById("tree"), {
-            mouseScrool: OrgChart.action.scroll,
-            nodeMouseClick: OrgChart.action.pan,
-            collapse: {
-                level: 3,
-                allChildren: true
-            },
-            template: "myTemplate",
-            tags: {
-                "partner": {
-                    template: "ula"
-                }
-            },
-            nodeBinding: {
-                field_0: "first",
-                field_1: "last",
-                field_2: "third",
-                field_3: "second",
-                img_0: "img"
-            },
-            nodes:
-                {{data|safe}}
-        });
+myChart.showLoading();
+  myChart.hideLoading();
+  myChart.setOption(
+    (option = {
+      tooltip: {
+        trigger: 'item',
+        triggerOn: 'mousemove'
+      },
+      series: [
+        {
+          type: 'tree',
+          data: [data],
+          left: '2%',
+          right: '2%',
+          top: '8%',
+          bottom: '20%',
+          symbol: 'emptyCircle',
+          orient: 'vertical',
+          expandAndCollapse: true,
+          label: {
+            position: 'top',
+            rotate: -90,
+            verticalAlign: 'middle',
+            align: 'right',
+            fontSize: 9
+          },
+          leaves: {
+            label: {
+              position: 'bottom',
+              rotate: -90,
+              verticalAlign: 'middle',
+              align: 'left'
+            }
+          },
+          animationDurationUpdate: 750
+        }
+      ]
+    })
+  );
+
+
+option && myChart.setOption(option);
+
     </script>
 {% endblock %}
 

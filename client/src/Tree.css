@@ -1,0 +1,31 @@
+.custom-container {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+svg.custom .node circle {
+	fill: #F3F3FF;
+	stroke: #2593B8;
+	stroke-width: 1.5px;
+}
+
+svg.custom .node text {
+	font-size: 11px;
+	background-color: #444;
+	fill: #F4F4F4;
+	text-shadow: 0 1px 4px black;
+}
+
+svg.custom .node {
+	cursor: pointer;
+}
+
+.node-title {
+  dx: -200;
+  fill: green;
+}
+
+.node-label {
+}
+

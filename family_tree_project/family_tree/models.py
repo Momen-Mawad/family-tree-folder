@@ -1,66 +1,67 @@
 from django.db import models
-from django.utils.text import slugify
-from django.urls import reverse
 from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.dispatch import receiver
+
+User = get_user_model()
+
+
+@receiver(models.signals.post_save, sender=User)
+def user_created(sender, instance, created, **kwargs):
+    if created:
+        Family.objects.create(user=instance, name=instance.family_name)
 
 
 class Family(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
-    name = models.CharField(max_length=255, unique=True)
-    slug = models.SlugField(allow_unicode=True, unique=True)
-    description = models.TextField(blank=True, default='')
-    description_html = models.TextField(editable=False, default='', blank=True)
-    members = models.IntegerField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, unique=False, blank=True, null=True)
 
     def __str__(self):
         return self.name
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        self.members = PersonData.all().count()
-        super().save(*args, **kwargs)
-
-    def get_absolute_url(self):
-        return reverse('families:single', kwargs={'slug': self.slug})
 
     class Meta:
         ordering = ['name']
 
 
-class PersonData(models.Model):
+class PersonManager(models.Manager):
+
+    def get_by_natural_key(self, name):
+        return self.get_or_create(name=name)[0]
+
+
+class Person(models.Model):
     id = models.IntegerField(unique=True, primary_key=True)
-    first = models.CharField(max_length=20, blank=True, null=True)
-    second = models.CharField(max_length=20, blank=True, null=True)
-    third = models.CharField(max_length=20, blank=True, null=True)
-    last = models.CharField(max_length=20, blank=True, null=True)
-    pid = models.IntegerField(blank=True, null=True)
-    partner = models.CharField(max_length=20, blank=True, null=True)
-    img = models.IntegerField(blank=True, null=True)
+    name = models.CharField("Name", max_length=20, blank=True)
+    pid = models.IntegerField("Parent ID", blank=True)
+    parent = models.ForeignKey('Person', null=True, blank=True, on_delete=models.CASCADE, related_name='children')
+    partner = models.CharField("Partner ID", max_length=20, blank=True)
+    img = models.IntegerField(blank=True)
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.id
+        return self.name
 
     class Meta:
         ordering = ['id']
 
 
+class Child(models.Model):
+    id = models.IntegerField(unique=True, primary_key=True)
+    name = models.CharField("Name", max_length=20, blank=True)
+    img = models.IntegerField(blank=True)
+    parent = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='children2')
+    family = models.ForeignKey(Family, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['parent']
+
+
 class AccessRecord(models.Model):
-    name = models.ForeignKey(PersonData, on_delete=models.DO_NOTHING)
+    name = models.ForeignKey(Person, on_delete=models.DO_NOTHING)
     date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.date
-
-
-class UserProfileInfo(models.Model):
-
-    family = models.ForeignKey(Family, on_delete=models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
-    # profile_pic = models.ImageField(upload_to='profile_pics', blank=True) Cannot use ImageField because Pillow is not installed.
-
-    def __str__(self):
-        return self.user.username
-
-    class Meta:
-        unique_together = ('family', 'user')

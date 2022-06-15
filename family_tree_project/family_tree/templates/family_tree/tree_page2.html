@@ -1,0 +1,65 @@
+{% extends "family_tree/tree_base.html" %}
+{% load static %}
+
+{% block header_block%}
+    <title>عائلة محمود معوض</title>
+    <script src="{% static 'orgchart.js' %}"></script>
+{% endblock %}
+
+{% block body_block %}
+    <p>{{ familydata_list }}</p>
+    <h2>Member Count: {{family.members.count }}</h2>
+    <div class="grid-item">
+        <div style="width:100%; height:60%;" id="tree"/></div>
+    </div>
+{% endblock %}
+
+{% block script_block%}
+    <script>
+        OrgChart.templates.myTemplate = Object.assign({}, OrgChart.templates.ana);
+
+        OrgChart.templates.myTemplate.field_0 =
+            '<text class="field_0" style="font-size: 24px;" fill="#ffffff" x="125" y="50" text-anchor="middle">{val}</text>';
+        OrgChart.templates.myTemplate.field_1 =
+            '<text class="field_1" style="font-size: 14px;" fill="#ffffff" x="75" y="80" text-anchor="middle">{val}</text>';
+        OrgChart.templates.myTemplate.field_2 =
+            '<text class="field_2" style="font-size: 14px;" fill="#ffffff" x="125" y="80" text-anchor="middle">{val}</text>';
+        OrgChart.templates.myTemplate.field_3 =
+            '<text class="field_3" style="font-size: 14px;" fill="#ffffff" x="175" y="80" text-anchor="middle">{val}</text>';
+
+        OrgChart.templates.ula.field_0 =
+            '<text class="field_0" style="font-size: 24px;" fill="#0000FF" x="125" y="50" text-anchor="middle">{val}</text>';
+        OrgChart.templates.ula.field_1 =
+            '<text class="field_1" style="font-size: 14px;" fill="#0000FF" x="75" y="80" text-anchor="middle">{val}</text>';
+        OrgChart.templates.ula.field_2 =
+            '<text class="field_2" style="font-size: 14px;" fill="#0000FF" x="125" y="80" text-anchor="middle">{val}</text>';
+        OrgChart.templates.ula.field_3 =
+            '<text class="field_3" style="font-size: 14px;" fill="#0000FF" x="175" y="80" text-anchor="middle">{val}</text>';
+
+        var chart = new OrgChart(document.getElementById("tree"), {
+            mouseScrool: OrgChart.action.scroll,
+            nodeMouseClick: OrgChart.action.pan,
+            collapse: {
+                level: 3,
+                allChildren: true
+            },
+            template: "myTemplate",
+            tags: {
+                "partner": {
+                    template: "ula"
+                }
+            },
+            nodeBinding: {
+                field_0: "first",
+                field_1: "last",
+                field_2: "third",
+                field_3: "second",
+                img_0: "img"
+            },
+            nodes:
+                {{data|safe}}
+        });
+    </script>
+{% endblock %}
+
+

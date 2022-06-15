@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'accounts',
     'family_tree',
     "bootstrap5",
+    'corsheaders',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'family_tree_project.urls'
@@ -104,6 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'accounts.User'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -125,6 +130,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
 
+
 LOGIN_REDIRECT_URL = '/family_tree/tree_page'
 # LOGOUT_REDIRECT_URL = '/'
 
@@ -132,3 +138,10 @@ LOGIN_REDIRECT_URL = '/family_tree/tree_page'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ORIGIN_WHITELIST = [
+     'http://localhost:3000'
+]
+
+AUTH_PASSWORD_VALIDATORS = []
+

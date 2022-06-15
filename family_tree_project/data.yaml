@@ -1,0 +1,37 @@
+- model: family_tree.Person
+  pk: 1
+  fields:
+    name: مصطفى
+    pid: 2
+    partner: أمال
+    img: 1
+    family: 1
+
+- model: family_tree.Child
+  pk: 1
+  fields:
+    name: محمود
+    img: 1
+    parent: 1
+    family: 1
+- model: family_tree.Child
+  pk: 2
+  fields:
+    name: ميرفت
+    img: 1
+    parent: 1
+    family: 1
+- model: family_tree.Child
+  pk: 3
+  fields:
+    name: مؤمن
+    img: 1
+    parent: 1
+    family: 1
+- model: family_tree.Child
+  pk: 4
+  fields:
+    name: مروة
+    img: 1
+    parent: 1
+    family: 1

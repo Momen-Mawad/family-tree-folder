@@ -21,7 +21,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Index.as_view(), name='index'),
-    re_path(r'^family_tree/', include(('family_tree.urls', 'family_tree'), namespace='family_tree')),
+    re_path(r'^', include(('family_tree.urls', 'family_tree'), namespace='family_tree')),
     re_path(r'^accounts/', include('accounts.urls', namespace='accounts')),
     re_path(r'^', include('django.contrib.auth.urls')),
     re_path(r'^test', views.TestPage.as_view(), name='test_page'),

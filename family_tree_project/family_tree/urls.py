@@ -1,10 +1,20 @@
 from django.urls import path, re_path
+from rest_framework import routers
 from . import views
+from django.urls import include
 
-urlpatterns = [
-    #re_path(r'^tree_page/(?P<username>[-\w]+)/$', views.TreePage.as_view(), name='tree_page'),
-    #re_path(r'^tree_list/(?P<username>[-\w]+)/$', views.TreeList.as_view(), name='tree_list'),
-    path('tree_page/', views.TreePage.as_view(), name='tree_page'),
-    path('tree_list/', views.TreeList.as_view(), name='tree_list'),
+router = routers.DefaultRouter()
+router.register(r'family', views.FamilyView)
+router.register(r'person', views.PersonView)
+router.register(r'child', views.ChildView)
+router.register(r'user', views.UserView)
+urlpatterns = router.urls
 
-]
+
+# urlpatterns = [
+#     re_path(r'^', include(router.urls)),
+#     path('account/register', views.UserView.as_view()),
+#     path('create_prson', views.PersonView.as_view()),
+#     path('families', views.FamilyView.as_view()),
+#
+# ]
