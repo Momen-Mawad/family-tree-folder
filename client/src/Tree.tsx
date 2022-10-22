@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Tree from "react-d3-tree";
-import orgChartJson from "./data.json";
 import { useCenteredTree } from "./helpers";
 import "./Tree.css";
 
@@ -20,14 +19,15 @@ const renderForeignObjectNode = ({
   foreignObjectProps
 }) => (
   <g>
-    <circle r={15}></circle>
+    <circle r={5}></circle>
     {/* `foreignObject` requires width & height to be explicitly set. */}
     <foreignObject {...foreignObjectProps}>
-      <div style={{ border: "1px solid black", backgroundColor: "#4287f5" }}>
-        <h3 style={{ textAlign: "center" }}>{nodeDatum.name}</h3>
+      <div>
         {nodeDatum.children && (
           <button style={{ width: "100%" }} onClick={toggleNode}>
-            {nodeDatum.__rd3t.collapsed ? nodeDatum.name : nodeDatum.name}
+            <h3>
+              {nodeDatum.__rd3t.collapsed ? nodeDatum.name : nodeDatum.name}
+            </h3>
           </button>
         )}
       </div>
@@ -39,7 +39,6 @@ export default function App() {
   const [data, setData ] = useState({});
 
   useEffect(() => {
-
   async function fetchData() {
     const response = await fetch('http://127.0.0.1:8000/person/', {
       method: 'GET',
@@ -59,7 +58,7 @@ export default function App() {
 
   const [translate, containerRef] = useCenteredTree();
   const nodeSize = { x: 200, y: 200 };
-  const foreignObjectProps = { width: nodeSize.x, height: nodeSize.y, x: 20 };
+  const foreignObjectProps = { width: nodeSize.x, height: nodeSize.y, x: -100 };
   return (
     <div style={containerStyles} ref={containerRef}>
       <Tree

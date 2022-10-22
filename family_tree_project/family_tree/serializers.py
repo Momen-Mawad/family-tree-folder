@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Family, Person, Child
+from .models import Family, Person
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -11,17 +11,8 @@ class FamilySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ChildSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Person
-        # fields = ('id', 'name', 'img', 'parent', 'family')
-        fields = '__all__'
-
-
 class PersonSerializer(serializers.ModelSerializer):
 
-    # children = ChildSerializer(many=True, read_only=True)
-    #children = serializers.ManyRelatedField()
     class Meta:
         model = Person
         fields = ['id', 'name', 'pid', 'parent', 'partner', 'img', 'family', 'children']
