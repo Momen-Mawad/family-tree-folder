@@ -16,17 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from django.urls import include
-from . import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.shortcuts import render
+
+
+def render_react(request):
+    return render(request, "index.html")
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.Index.as_view(), name='index'),
-    re_path(r'^', include(('family_tree.urls', 'family_tree'), namespace='family_tree')),
-    re_path(r'^', include('django.contrib.auth.urls')),
-    re_path(r'^test', views.TestPage.as_view(), name='test_page'),
-    re_path(r'^contact', views.ContactPage.as_view(), name='contact_page'),
-    re_path(r'^about', views.AboutPage.as_view(), name='about_page'),
-    path('admin/', admin.site.urls),
     path('authentication/', include("authentication.urls")),
-
+    path('tree/', include("family_tree.urls")),
+    re_path(r"^$", render_react),
+    re_path(r"^(?:.*)/?$", render_react),
 ]
+
+urlpatterns += staticfiles_urlpatterns()

@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaBehance, FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa'
-export const links = [
+export const mainLinks = [
   {
     id: 1,
     url: '/Tree',
@@ -10,6 +10,24 @@ export const links = [
     id: 2,
     url: '/List',
     text: 'List',
+  },
+  {
+    id: 3,
+    url: '/about',
+    text: 'about',
+  },
+]
+
+export const guestLinks = [
+  {
+    id: 1,
+    url: '/login',
+    text: 'Login',
+  },
+  {
+    id: 2,
+    url: '/register',
+    text: 'Register',
   },
   {
     id: 3,

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Tree from "react-d3-tree";
 import { useCenteredTree } from "./helpers";
 import "./Tree.css";
-
+import Cookies from 'js-cookie';
+import { load_tree } from '../actions/tree';
+import { connect } from 'react-redux';
 
 const containerStyles = {
   width: "100vw",
@@ -35,41 +37,40 @@ const renderForeignObjectNode = ({
   </g>
 );
 
-export default function App() {
-  const [data, setData ] = useState({});
+const mapStateToProps = state => ({
+  tree: state.tree
+});
 
-  useEffect(() => {
-  async function fetchData() {
-    const response = await fetch('http://127.0.0.1:8000/person/', {
-      method: 'GET',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json'
+
+export function App({tree}) {
+
+  const makeTree = (familyData) => (
+    <Tree
+      data={familyData}
+      translate={translate}
+      nodeSize={nodeSize}
+      renderCustomNodeElement={(rd3tProps) =>
+        renderForeignObjectNode({ ...rd3tProps, foreignObjectProps })
       }
-    })
-    const result = await response.json();
-    setData(result);
-    }
-    fetchData()
-  },
-  []
+      orientation="vertical"
+    />
   );
-  console.log(data);
 
   const [translate, containerRef] = useCenteredTree();
   const nodeSize = { x: 200, y: 200 };
   const foreignObjectProps = { width: nodeSize.x, height: nodeSize.y, x: -100 };
+
+  console.log(tree.payload)
+
+
   return (
     <div style={containerStyles} ref={containerRef}>
-      <Tree
-        data={data}
-        translate={translate}
-        nodeSize={nodeSize}
-        renderCustomNodeElement={(rd3tProps) =>
-          renderForeignObjectNode({ ...rd3tProps, foreignObjectProps })
-        }
-        orientation="vertical"
-      />
+      { typeof  tree.payload !== 'undefined' && tree.payload.length > 0
+      ? makeTree(tree.payload)
+      : makeTree({}) }
     </div>
   );
 }
+
+
+export default connect(mapStateToProps)(App);

@@ -16,12 +16,11 @@ class Family(models.Model):
 
 
 class Person(models.Model):
-    id = models.IntegerField(unique=True, primary_key=True)
+    id = models.IntegerField(unique=False, primary_key=True)
     name = models.CharField("Name", max_length=20, blank=True)
-    pid = models.IntegerField("Parent ID", blank=True)
     parent = models.ForeignKey('Person', null=True, blank=True, on_delete=models.CASCADE, related_name='children')
     partner = models.CharField("Partner ID", max_length=20, blank=True)
-    img = models.IntegerField(blank=True)
+    img = models.IntegerField(null=True, blank=True)
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
 
     def __str__(self):

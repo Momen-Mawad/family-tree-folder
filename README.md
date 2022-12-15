@@ -1,7 +1,7 @@
 
 curl -H "Content-Type: application/json" -d '{"username":"Mawad2","password":"1","password2":"1","family_name":"Mawad2"}' -X POST http://127.0.0.1:8000/authentication/register/
 
-curl -H "Content-Type: application/json" -X GET http://127.0.0.1:8000/person/
+curl -d '{"username":"momen30","password":"123456",}' -H "Content-Type: application/json" -X GET http://127.0.0.1:8000/person/
 curl -H "Content-Type: application/json" -X GET http://127.0.0.1:8000/family/
 
 delete a user
@@ -10,6 +10,27 @@ curl -H "Content-Type: application/json" -X DELETE http://127.0.0.1:8000/authent
 
 curl -H "Content-Type: application/json" -d '{"id":"2", "name":"Muna","partner":"Abdullah","family":"1"}' -X POST http://127.0.0.1:8000/person/
 
+curl --user momen30:123456 -H "Content-Type: application/json" -d '{"id":"2", "name":"Munaaaa","partner":"Abdullah","family":"1"}' -X PUT http://127.0.0.1:8000/person/
+
+
 
 exec(open("populate.py").read())
+
+{
+"username": "",
+"password": "",
+"re_password": "",
+"family_name": "",
+}
+
+{
+"username": "momen30",
+"password": "1"
+}
+
+
+COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.yaml build
+
+docker-compose -f docker-compose.yaml up
+
 

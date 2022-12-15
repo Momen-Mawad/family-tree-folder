@@ -1,0 +1,19 @@
+curl "http://localhost:8000/authentication/register" ^
+  -H "Accept: application/json" ^
+  -H "Accept-Language: en-DE,en;q=0.9,de-DE;q=0.8,de;q=0.7,en-GB;q=0.6,en-US;q=0.5" ^
+  -H "Cache-Control: no-cache" ^
+  -H "Connection: keep-alive" ^
+  -H "Content-Type: application/json" ^
+  -H "Origin: http://localhost:3000" ^
+  -H "Pragma: no-cache" ^
+  -H "Referer: http://localhost:3000/" ^
+  -H "Sec-Fetch-Dest: empty" ^
+  -H "Sec-Fetch-Mode: cors" ^
+  -H "Sec-Fetch-Site: same-site" ^
+  -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" ^
+  -H "X-CSRFToken: undefined" ^
+  -H "sec-ch-ua: ^\^"Google Chrome^\^";v=^\^"107^\^", ^\^"Chromium^\^";v=^\^"107^\^", ^\^"Not=A?Brand^\^";v=^\^"24^\^"" ^
+  -H "sec-ch-ua-mobile: ?0" ^
+  -H "sec-ch-ua-platform: ^\^"Windows^\^"" ^
+  --data-raw "^{^\^"username^\^":^\^"momen^\^",^\^"password^\^":^\^"123456^\^",^\^"re_password^\^":^\^"123456^\^",^\^"family_name^\^":^\^"mawad^\^"^}" ^
+  --compressed
