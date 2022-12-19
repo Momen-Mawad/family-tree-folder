@@ -4,24 +4,23 @@ on:
   push:
     branches: [master]
 
-env:
-    # Additionally mentioned in docker-sha-release-latest
-    # as use of variable fails there
-    DOCKERHUB_REPOSITORY: mundialis/actinia-core
-
 jobs:
   job_one:
     name: Deploy
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the files
-        uses: actions/checkout@v2
 
-      - name: Deploying app on server
-        uses: appleboy/ssh-action@master
-        with:
-          script: |
-            ssh -i ${{ secrets.KEY_ACTIONS }} ec2-user@ec2-34-228-19-244.compute-1.amazonaws.com
-            sudo docker rm -f $(sudo docker ps -a -q)
-            sudo docker rmi -f $(sudo docker images -aq)
-            sudo docker pull momen3/momenrepo
+    steps:
+      - name: Deploy in EC2
+        uses: actions/checkout@v2
+        env:
+          PRIVATE_KEY: ${{ secrets.KEY_ACTIONS  }}
+          HOSTNAME : ${{ secrets.HOST_DNS  }}
+          USER_NAME : ${{ secrets.USER_NAME  }}
+
+        run: |
+         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_DNS} '
+
+          sudo docker rm -f $(sudo docker ps -a -q)
+          sudo docker rmi -f $(sudo docker images -aq)
+          sudo docker pull momen3/momenrepo
