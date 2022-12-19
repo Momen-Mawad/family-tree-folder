@@ -1,4 +1,4 @@
-FROM  python:3.8.13-bullseye
+FROM  python:3.10.9-bullseye
 
 ENV PYTHONUNBUFFERED=1
 
@@ -8,5 +8,7 @@ RUN pip install django django-cors-headers django-bootstrap-v5 djangorestframewo
 
 # copy from the current directory of the Dockerfile to /api in the image
 COPY .. .
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 EXPOSE 8000

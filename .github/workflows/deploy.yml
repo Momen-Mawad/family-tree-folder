@@ -1,0 +1,29 @@
+name: Deployment Workflow
+
+on:
+  push:
+    branches: [master]
+
+env:
+    # Additionally mentioned in docker-sha-release-latest
+    # as use of variable fails there
+    DOCKERHUB_REPOSITORY: mundialis/actinia-core
+
+jobs:
+  job_one:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploying app on server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ec2-34-228-19-244.compute-1.amazonaws.com
+          username: Momen-Mawad
+          key: ${{ secrets.KEY_ACTIONS }}
+          port: 22
+          script: |
+            sudo docker rm -f $(sudo docker ps -a -q)
+            sudo docker rmi -f $(sudo docker images -aq)
+            sudo docker pull momen3/momenrepo
+

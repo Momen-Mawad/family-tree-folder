@@ -28,9 +28,20 @@ exec(open("populate.py").read())
 "password": "1"
 }
 
+docker build -t family-appmom
 
 COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.yaml build
 
 docker-compose -f docker-compose.yaml up
 
 
+```
+cd orchestrator/
+docker login nexus.terrestris.de
+docker build -t nexus.terrestris.de/wwfch_firieval/orchestrator:1.0.0 -t nexus.terrestris.de/wwfch_firieval/orchestrator:latest .
+docker push nexus.terrestris.de/wwfch_firieval/orchestrator:1.0.0
+docker push nexus.terrestris.de/wwfch_firieval/orchestrator:latest
+
+docker build -t momen3/momenrepo .
+docker push momen3/momenrepo:latest
+```

@@ -6,10 +6,3 @@ services:
     volumes:
       - ./family_tree_project:/family_tree_project
     command: bash -c "python manage.py runserver 0.0.0.0:8000"
-
-  django:
-    build: ./client
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./client:/client
