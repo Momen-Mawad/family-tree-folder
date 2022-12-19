@@ -17,8 +17,8 @@ jobs:
           USER_NAME : ${{ secrets.USER_NAME  }}
 
         run: |
-         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_DNS}
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
 
           sudo docker rm -f $(sudo docker ps -a -q)
           sudo docker rmi -f $(sudo docker images -aq)
