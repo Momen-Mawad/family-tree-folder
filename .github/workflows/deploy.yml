@@ -13,17 +13,15 @@ jobs:
   job_one:
     name: Deploy
     runs-on: ubuntu-latest
-
     steps:
+      - name: Checkout the files
+        uses: actions/checkout@v2
+
       - name: Deploying app on server
         uses: appleboy/ssh-action@master
         with:
-          host: ec2-34-228-19-244.compute-1.amazonaws.com
-          username: ec2-user
-          key: ${{ secrets.KEY_ACTIONS }}
-          port: 22
           script: |
+            ssh -i ${{ secrets.KEY_ACTIONS }} ec2-user@ec2-34-228-19-244.compute-1.amazonaws.com
             sudo docker rm -f $(sudo docker ps -a -q)
             sudo docker rmi -f $(sudo docker images -aq)
             sudo docker pull momen3/momenrepo
-
