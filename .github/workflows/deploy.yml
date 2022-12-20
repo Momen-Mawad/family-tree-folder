@@ -24,6 +24,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
+          context: "{{defaultContext}}:family_tree_project"
           push: true
           file: family_tree_project/Dockerfile
           tags: ${{ secrets.DOCKERHUB_REPO }}:latest
