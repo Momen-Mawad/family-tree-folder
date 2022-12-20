@@ -4,9 +4,6 @@ on:
   push:
     branches: [master]
 
-env:
-  DOCKERHUB_REPOSITORY: momen3/momenrepo
-
 jobs:
   job_one:
     name: Build docker image
@@ -28,7 +25,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tag: ${DOCKERHUB_REPOSITORY}:latest
+          tag: ${{ secrets.DOCKERHUB_REPO }}:latest
           file: family_tree_project/Dockerfile
 
 
