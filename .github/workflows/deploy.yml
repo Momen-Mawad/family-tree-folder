@@ -34,6 +34,7 @@ jobs:
 
   job_two:
     name: Deploy
+    needs: job_one
     runs-on: ubuntu-latest
 
     steps:
