@@ -18,7 +18,7 @@ jobs:
           username : ${{ secrets.USER_NAME  }}
           key: ${{ secrets.KEY_ACTIONS  }}
           script: |
-            whoami
+            touch /home/ec2-user/test
             docker rm -f $(sudo docker ps -a -q) || (echo "Container didn't exist so not removed."; exit 0)
             docker rmi -f $(sudo docker images -aq) || (echo "Image didn't exist so not removed."; exit 0)
             docker pull momen3/momenrepo
