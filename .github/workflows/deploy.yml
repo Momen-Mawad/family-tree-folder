@@ -22,3 +22,5 @@ jobs:
             docker rm -f $(sudo docker ps -a -q) || (echo "Container didn't exist so not removed."; exit 0)
             docker rmi -f $(sudo docker images -aq) || (echo "Image didn't exist so not removed."; exit 0)
             docker pull momen3/momenrepo
+            docker build . -t momen3/momenrepo
+            docker run -dp 8000:8000 momen3/momenrepo
