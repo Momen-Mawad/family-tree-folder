@@ -26,7 +26,7 @@ jobs:
         with:
           push: true
           file: family_tree_project/Dockerfile
-          tag: momen3/momenrepo:latest
+          tags: ${{ secrets.DOCKERHUB_REPO }}:latest
 
 
   job_two:
