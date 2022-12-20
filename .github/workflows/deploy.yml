@@ -18,7 +18,7 @@ jobs:
           USER_NAME : ${{ secrets.USER_NAME  }}
 
         run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          echo "$PRIVATE_KEY" > private_key
           ssh -T -i private_key ${USER_NAME}@${HOSTNAME}
 
           sudo docker rm -f $(sudo docker ps -a -q)
