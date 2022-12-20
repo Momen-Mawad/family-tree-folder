@@ -26,7 +26,6 @@ jobs:
         with:
           context: "{{defaultContext}}:family_tree_project"
           push: true
-          file: family_tree_project/Dockerfile
           tags: ${{ secrets.DOCKERHUB_REPO }}:latest
 
 
