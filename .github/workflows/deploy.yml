@@ -14,9 +14,9 @@ jobs:
       - name: Deploy in EC2
         uses: appleboy/ssh-action@v0.1.6
         with:
-          key: ${{ secrets.KEY_ACTIONS  }}
           host : ${{ secrets.HOST_DNS  }}
           username : ${{ secrets.USER_NAME  }}
+          key: ${{ secrets.KEY_ACTIONS  }}
 
           run: |
             echo "$PRIVATE_KEY"
