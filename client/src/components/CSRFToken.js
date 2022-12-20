@@ -41,7 +41,7 @@ const CSRFToken = () => {
 
 
     return (
-        <input name="csrfmiddlewaretoken" value={csrftoken} />
+        <input name="csrfmiddlewaretoken" value={csrftoken} type="hidden"/>
     );
 };
 
