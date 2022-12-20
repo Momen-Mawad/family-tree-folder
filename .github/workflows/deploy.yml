@@ -18,6 +18,6 @@ jobs:
           username : ${{ secrets.USER_NAME  }}
           key: ${{ secrets.KEY_ACTIONS  }}
           script: |
-            sudo docker rm -f $(sudo docker ps -a -q) || True
-            sudo docker rmi -f $(sudo docker images -aq) || True
+            sudo docker rm -f $(sudo docker ps -a -q) || (echo "Container didn't exist so not removed."; exit 0)
+            sudo docker rmi -f $(sudo docker images -aq) || (echo "Image didn't exist so not removed."; exit 0)
             sudo docker pull momen3/momenrepo
