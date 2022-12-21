@@ -16,9 +16,10 @@ class Family(models.Model):
 
 
 class Person(models.Model):
-    id = models.IntegerField(unique=False, primary_key=True)
+    id_F = models.IntegerField(unique=False, default=0)
     name = models.CharField("Name", max_length=20, blank=True)
-    parent = models.ForeignKey('Person', null=True, blank=True, on_delete=models.CASCADE, related_name='children')
+    parent = models.ForeignKey('Person', null=True, blank=True,
+                               on_delete=models.CASCADE, related_name='children')
     partner = models.CharField("Partner ID", max_length=20, blank=True)
     img = models.IntegerField(null=True, blank=True)
     family = models.ForeignKey(Family, on_delete=models.CASCADE)

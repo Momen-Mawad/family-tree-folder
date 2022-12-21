@@ -2,16 +2,13 @@ from rest_framework import viewsets
 from .models import Person, Family
 from .serializers import FamilySerializer, PersonSerializer
 from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import permissions
 
 
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
-
-
-class FamilyView(viewsets.ModelViewSet):
-    serializer_class = FamilySerializer
-    queryset = Family.objects.all()
 
 
 class PersonView(viewsets.ModelViewSet):
@@ -24,6 +21,8 @@ class PersonView(viewsets.ModelViewSet):
 
             queryset = Person.objects.filter(family=family.id)
             serializer = PersonSerializer(queryset, many=True)
+
+            print(serializer.data)
             return Response(serializer.data)
 
         except TypeError:
@@ -57,3 +56,17 @@ class PersonView(viewsets.ModelViewSet):
             return Response({'person': person.data, 'username': str(username)})
         except TypeError:
             return Response({'error': 'Something went wrong when updating profile'})
+
+
+class GetFamiliesView(viewsets.ModelViewSet):
+    permission_classes = (permissions.AllowAny, )
+    serializer_class = FamilySerializer
+    queryset = Family.objects.all()
+
+    def list(self, request):
+        queryset = Family.objects.all()
+        if request.META['REMOTE_ADDR'] == '127.0.0.1':
+            families = FamilySerializer(queryset, many=True)
+            return Response(families.data)
+        else:
+            return Response(status=401)

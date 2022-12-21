@@ -123,7 +123,10 @@ class GetUsersView(APIView):
     permission_classes = (permissions.AllowAny, )
 
     def get(self, request, format=None):
-        users = User.objects.all()
+        if request.META['REMOTE_ADDR'] == '127.0.0.1':
+            users = User.objects.all()
+            users = UserSerializer(users, many=True)
+            return Response(users.data)
+        else:
+            return Response(status=401)
 
-        users = UserSerializer(users, many=True)
-        return Response(users.data)

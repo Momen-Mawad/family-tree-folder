@@ -15,7 +15,7 @@ class PersonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Person
-        #fields = ['id', 'name', 'pid', 'parent', 'partner', 'img', 'family', 'children']
+        #fields = ['id', 'name', 'parent', 'partner', 'img', 'family', 'children']
         fields = ['name', 'children']
 
     def get_fields(self):

@@ -3,51 +3,48 @@ from family_tree.models import Person, Family
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
+F_PK = 2
+
 
 def populate_person():
     path = 'data_small.csv'
     with open(path, encoding="utf8") as f:
         reader = csv.reader(f)
         for row in reader:
-            #if not Person.objects.filter(pk=row[0]).exists():
-                if Person.objects.filter(pk=row[5]).exists():
-                    print(row[0])
-                    print(row[1])
-                    print(row[5])
-                    Person.objects.create(
-                        id=row[0],
-                        name=row[1],
-                        parent=Person.objects.get(pk=row[5]),
-                        partner=row[7],
-                        img=row[0],
-                        family=Family.objects.get(pk=7)
-                        )
-                else:
-                    print(row[0])
-                    print(row[1])
-                    print(row[5])
-                    #Person.objects.create(id=int(row[0])+100000, family=Family.objects.get(pk=2))
+            if Person.objects.filter(id_F=row[2], family=Family.objects.get(pk=F_PK)).exists():
+                print(row[1])
+                Person.objects.create(
+                    id_F=row[0],
+                    name=row[1],
+                    parent=Person.objects.get(id_F=row[2], family=Family.objects.get(pk=F_PK)),
+                    #partner=row[3],
+                    img=row[0],
+                    family=Family.objects.get(pk=F_PK)
+                    )
+            else:
+                print(row[1])
 
-                    Person.objects.create(
-                        id=row[0],
-                        name=row[1],
-                        #parent=Person.objects.create(),
-                        partner=row[7],
-                        img=row[0],
-                        family=Family.objects.get(pk=7)
-                        )
+                Person.objects.create(
+                    id_F=row[0],
+                    name=row[1],
+                    #partner=row[3],
+                    img=row[0],
+                    family=Family.objects.get(pk=F_PK)
+                    )
+            print(Person.objects.get(id_F=row[0], family=Family.objects.get(pk=F_PK)).id)
 
 populate_person()
 
+#print(Person.objects.filter(id_F=0, family=Family.objects.get(pk=2)).exists())
+
 #Person.objects.create(id="3", name="name", parent=Person.objects.create(), family=Family.objects.get(pk=2))
 
-
-
 # select a family
-#print(Person.objects.filter(family=Family.objects.get(pk=2)))
+#print(Person.objects.filter(id_F=1, family=Family.objects.get(pk=F_PK))[0].family.id)
 #print(Family.objects.all())
+#print(Person.objects.all())
 #print(len(Person.objects.all().filter(family=Family.objects.get(pk=2))))
-#print(Family.objects.get(pk=2))
+#print(Family.objects.get(pk=F_PK))
 # for i in Family.objects.all():
 #     print(i)
 #     print(i.pk)

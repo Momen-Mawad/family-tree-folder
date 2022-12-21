@@ -11,6 +11,6 @@ from django.urls import include
 
 
 urlpatterns = [
-    re_path('family', FamilyView.as_view({'get': 'list'})),
     re_path('person', PersonView.as_view({'get': 'list'})),
+    re_path('get_families', GetFamiliesView.as_view({'get': 'list'})),
 ]

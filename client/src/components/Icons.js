@@ -24,11 +24,11 @@ export const guestLinks = [
     url: '/login',
     text: 'Login',
   },
-  {
-    id: 2,
-    url: '/register',
-    text: 'Register',
-  },
+//  {
+//    id: 2,
+//    url: '/register',
+//    text: 'Register',
+//  },
   {
     id: 3,
     url: '/about',
