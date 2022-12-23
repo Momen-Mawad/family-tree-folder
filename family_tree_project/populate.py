@@ -3,11 +3,11 @@ from family_tree.models import Person, Family
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
-F_PK = 2
+F_PK = 1
 
 
 def populate_person():
-    path = 'data_small.csv'
+    path = 'data_no_partner.csv'
     with open(path, encoding="utf8") as f:
         reader = csv.reader(f)
         for row in reader:
@@ -33,7 +33,7 @@ def populate_person():
                     )
             print(Person.objects.get(id_F=row[0], family=Family.objects.get(pk=F_PK)).id)
 
-populate_person()
+#populate_person()
 
 #print(Person.objects.filter(id_F=0, family=Family.objects.get(pk=2)).exists())
 
@@ -51,7 +51,7 @@ populate_person()
 
 # delete all objects
 #Person.objects.all().delete()
-#print(Person.objects.filter(family=Family.objects.get(pk=2)).delete())
+#print(Person.objects.filter(family=Family.objects.get(pk=F_PK)).delete())
 
 # create a user
 #user = User.objects.create_user('Momen', '1'); user.save()

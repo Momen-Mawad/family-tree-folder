@@ -19,7 +19,7 @@ class PersonView(viewsets.ModelViewSet):
         try:
             family = Family.objects.get(user=user)
 
-            queryset = Person.objects.filter(family=family.id)
+            queryset = Person.objects.filter(family=family.id).order_by('id')
             serializer = PersonSerializer(queryset, many=True)
 
             print(serializer.data)

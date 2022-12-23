@@ -1,31 +1,13 @@
-.custom-container {
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.node__root > circle {
+  fill: red;
 }
 
-svg.custom .node circle {
-	fill: #F3F3FF;
-	stroke: #2593B8;
-	stroke-width: 1.5px;
+.node__branch > circle {
+  fill: yellow;
 }
 
-svg.custom .node text {
-	font-size: 11px;
-	background-color: #444;
-	fill: #F4F4F4;
-	text-shadow: 0 1px 4px black;
-}
-
-svg.custom .node {
-	cursor: pointer;
-}
-
-.node-title {
-  dx: -200;
+.node__leaf > circle {
   fill: green;
+  /* Let's also make the radius of leaf nodes larger */
+  r: 40;
 }
-
-.node-label {
-}
-

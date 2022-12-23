@@ -6,7 +6,7 @@ import Layout from './hocs/Layout';
 import Home from './containers/Home';
 import Register from './containers/Register';
 import Login from './containers/Login';
-import Tree from './components/Tree';
+import TreeGraph from './components/Tree';
 
 import { Provider } from 'react-redux';
 import store from './Store';
@@ -20,7 +20,7 @@ const App = () => (
           <Route path='/' element={<Home />}/>
           <Route path='/register' element={<Register />}/>
           <Route path='/login' element={<Login />}/>
-          <Route path='/tree' element={<Tree />}/>
+          <Route path='/tree' element={<TreeGraph />}/>
         </Routes>
       </Layout>
     </Router>

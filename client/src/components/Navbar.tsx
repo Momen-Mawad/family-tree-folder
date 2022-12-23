@@ -11,7 +11,7 @@ import Socialbar from './Socialbar'
 import { connect } from 'react-redux';
 import { logout } from '../actions/Auth';
 
-const navbar = ({ isAuthenticated, logout }) => {
+const Navbar = ({ isAuthenticated, logout }) => {
 
   const authLinks = (
     <Fragment>
@@ -82,4 +82,4 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { logout })(navbar);
+export default connect(mapStateToProps, { logout })(Navbar);
