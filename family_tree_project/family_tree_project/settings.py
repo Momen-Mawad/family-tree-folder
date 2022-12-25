@@ -28,31 +28,7 @@ SECRET_KEY = 'django-insecure-kn0l&1n^y!^v1#v8x9cr8mx3#d1+%)_!bng4tq)-=%eofs%pjn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS=['*']
 
-
-# ALLOWED_HOSTS = [
-#     'ec2-44-208-33-172.compute-1.amazonaws.com',
-#     'localhost'
-# ]
-
-
-CORS_ALLOW_ALL_ORIGINS = True
-
-
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3000',
-#     'http://localhost:8000',
-#     'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000'
-# ]
-
-CORS_ORIGIN_ALLOW_ALL = True
-
-# CORS_ORIGIN_WHITELIST = [
-#     'http://localhost:3000',
-#     'http://localhost:8000',
-#     'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000'
-# ]
 
 # Application definition
 
@@ -70,6 +46,36 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'family_tree',
 ]
+
+ALLOWED_HOSTS = [
+    'ec2-44-208-33-172.compute-1.amazonaws.com',
+    'localhost'
+]
+
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000',
+    'http://44.208.33.172:8000'
+]
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000',
+    'http://44.208.33.172:8000'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000',
+    'http://44.208.33.172:8000'
+]
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = ['*']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -167,11 +173,7 @@ LOGIN_REDIRECT_URL = '/family_tree/tree_page'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = [
-     'http://localhost:8000'
-]
 
-CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
