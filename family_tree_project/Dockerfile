@@ -4,13 +4,13 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /family_tree_project
 
-RUN pip install -r requirements.txt
-
 # copy from the current directory of the Dockerfile to /api in the image
 COPY . .
 
+RUN pip install -r requirements.txt
+
 RUN python manage.py collectstatic
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000", "--insecure"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 EXPOSE 8000
