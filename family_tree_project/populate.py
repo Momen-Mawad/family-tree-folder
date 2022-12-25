@@ -33,7 +33,7 @@ def populate_person():
                     )
             print(Person.objects.get(id_F=row[0], family=Family.objects.get(pk=F_PK)).id)
 
-#populate_person()
+print(Person.objects.filter(family=Family.objects.get(pk=F_PK)).delete()); populate_person();
 
 #print(Person.objects.filter(id_F=0, family=Family.objects.get(pk=2)).exists())
 

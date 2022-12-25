@@ -22,7 +22,6 @@ class PersonView(viewsets.ModelViewSet):
             queryset = Person.objects.filter(family=family.id).order_by('id')
             serializer = PersonSerializer(queryset, many=True)
 
-            print(serializer.data)
             return Response(serializer.data)
 
         except TypeError:
