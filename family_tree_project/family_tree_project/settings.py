@@ -26,22 +26,22 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-kn0l&1n^y!^v1#v8x9cr8mx3#d1+%)_!bng4tq)-=%eofs%pjn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'ec2-44-208-33-172.compute-1.amazonaws.com',
     'localhost'
 ]
 
-
 CORS_ALLOW_ALL_ORIGINS = True
-
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://ec2-44-208-33-172.compute-1.amazonaws.com'
 ]
+
+CORS_ALLOW_HEADERS = ['*']
 
 # Application definition
 
@@ -62,8 +62,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -104,7 +104,6 @@ DATABASES = {
 }
 
 SESSION_COOKIE_HTTPONLY = False
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -160,8 +159,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_TRUSTED_ORIGINS = [
      'http://localhost:8000'
 ]
-
-AUTH_PASSWORD_VALIDATORS = []
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
