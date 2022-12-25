@@ -40,7 +40,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:8000',
-    'http://ec2-44-208-33-172.compute-1.amazonaws.com'
+    'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000'
 ]
 
 # Application definition
@@ -150,7 +150,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 LOGIN_REDIRECT_URL = '/family_tree/tree_page'
-# LOGOUT_REDIRECT_URL = '/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
