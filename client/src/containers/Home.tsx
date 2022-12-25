@@ -8,7 +8,7 @@ const Home = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <div className='container'>
+    <div className='container' dir={i18n.dir()}>
       <div className='mt-5 p-5 bg-light'>
         <h1 className='display-4'>{t('Home.welcome')}</h1>
         <p className='lead'>
