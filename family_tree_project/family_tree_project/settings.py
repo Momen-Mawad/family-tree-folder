@@ -43,6 +43,14 @@ CORS_ALLOWED_ORIGINS = [
     'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000'
 ]
 
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000'
+]
+
 # Application definition
 
 INSTALLED_APPS = [
