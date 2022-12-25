@@ -47,4 +47,4 @@ jobs:
             docker rmi -f $(sudo docker images -aq) || (echo "Image didn't exist so not removed."; exit 0)
             docker pull ${{ secrets.DOCKERHUB_REPO }}
             docker build . -t ${{ secrets.DOCKERHUB_REPO }}
-            docker run -dp 8000:8000 ${{ secrets.DOCKERHUB_REPO }}
+            docker run -dp 8000:443 ${{ secrets.DOCKERHUB_REPO }}
