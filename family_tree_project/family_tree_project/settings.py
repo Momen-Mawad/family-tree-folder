@@ -28,28 +28,31 @@ SECRET_KEY = 'django-insecure-kn0l&1n^y!^v1#v8x9cr8mx3#d1+%)_!bng4tq)-=%eofs%pjn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'ec2-44-208-33-172.compute-1.amazonaws.com',
-    'localhost'
-]
+ALLOWED_HOSTS=['*']
+
+
+# ALLOWED_HOSTS = [
+#     'ec2-44-208-33-172.compute-1.amazonaws.com',
+#     'localhost'
+# ]
 
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://localhost:8000',
-    'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000'
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',
+#     'http://localhost:8000',
+#     'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000'
+# ]
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-    'http://localhost:8000',
-    'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000'
-]
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:3000',
+#     'http://localhost:8000',
+#     'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000'
+# ]
 
 # Application definition
 
