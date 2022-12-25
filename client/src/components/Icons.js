@@ -22,7 +22,7 @@ export const guestLinks = [
   {
     id: 1,
     url: '/login',
-    text: 'Login',
+    text: 'login',
   },
 //  {
 //    id: 2,

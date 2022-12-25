@@ -1,0 +1,22 @@
+{
+  "Navbar": {
+    "tree": "Tree",
+    "logout": "Logout",
+    "about": "About",
+    "register": "Register",
+    "login": "Login"
+  },
+  "Home": {
+    "welcome": "Welcome to E-Family Tree",
+    "thisIs": "This is a wonderful application for The family tree.",
+    "clickThe": "Click the button below to log in."
+  },
+  "Login": {
+    "login": "Login",
+    "loginInto": "Login into your Family Tree",
+    "username": "Username",
+    "password": "Password",
+    "dontHave": "Don't have an Account?",
+    "register": "Register"
+  }
+}

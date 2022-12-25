@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom'
 
-import React, { useState, useRef, useEffect, Fragment } from 'react';
+import React, { useState, useRef, useEffect, Fragment} from 'react';
+import { useTranslation } from 'react-i18next';
 
 import logo from './tree.svg'
 
@@ -10,16 +11,20 @@ import Socialbar from './Socialbar'
 
 import { connect } from 'react-redux';
 import { logout } from '../actions/Auth';
+import LanguageSelect from './LanguageSelect/LanguageSelect';
+import i18n from '../i18n';
 
 const Navbar = ({ isAuthenticated, logout }) => {
+
+  const { t, i18n } = useTranslation();
 
   const authLinks = (
     <Fragment>
       <li className='nav-item'>
-          <NavLink className='nav-link' to='/tree'>Tree</NavLink>
+          <NavLink className='nav-link' to='/tree'>{t('Navbar.tree')}</NavLink>
       </li>
       <li className='nav-item'>
-          <NavLink className='nav-link' onClick={logout} to='/'>Logout</NavLink>
+          <NavLink className='nav-link' onClick={logout} to='/'>{t('Navbar.logout')}</NavLink>
       </li>
     </Fragment>
   );
@@ -31,7 +36,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
         const { id, url, text } = link;
         return (
           <li className='nav-item' key={id}>
-            <NavLink to={url}>{text}</NavLink>
+            <NavLink to={url}>{t('Navbar.'+text)}</NavLink>
           </li>
         );
       })}
@@ -41,6 +46,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
   const [showLinks, setShowLinks] = useState(false);
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
+
   const toggleLinks = () => {
     setShowLinks(!showLinks);
   };
@@ -54,6 +60,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
       linksContainerRef.current.style.height = '0px';
     }
   }, [showLinks]);
+
 
   return (
     <nav>
@@ -72,6 +79,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
           </ul>
         </div>
         <Socialbar />
+        <LanguageSelect {...i18n} />
       </div>
     </nav>
   );

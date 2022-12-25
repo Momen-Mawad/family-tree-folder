@@ -10,7 +10,7 @@ const Socialbar = () => {
           return (
             <li key={id}>
               <a href={url}>{icon}</a>
-              </li>
+            </li>
           )
         })}
       </ul>

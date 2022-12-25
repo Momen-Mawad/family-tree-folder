@@ -4,7 +4,13 @@ import { connect } from 'react-redux';
 import { login } from '../actions/Auth';
 import CSRFToken from '../components/CSRFToken';
 
+import { useTranslation } from 'react-i18next';
+import i18n from '../i18n';
+
 const Login = ({ login, isAuthenticated }) => {
+
+    const { t, i18n } = useTranslation();
+
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -25,16 +31,16 @@ const Login = ({ login, isAuthenticated }) => {
 
     return (
         <div className='container mt-5'>
-            <h1>Sign In</h1>
-            <p>Sign into your Family Tree</p>
+            <h1>{t('Login.login')}</h1>
+            <p>{t('Login.loginInto')}</p>
             <form onSubmit={e => onSubmit(e)}>
                 <CSRFToken />
                 <div className='form-group'>
-                    <label className='form-label'>Username: </label>
+                    <label className='form-label'>{t('Login.username')}: </label>
                     <input
                         className='form-control'
                         type='text'
-                        placeholder='Username*'
+                        placeholder={t("Login.username") + "*"}
                         name='username'
                         onChange={e => onChange(e)}
                         value={username}
@@ -42,11 +48,11 @@ const Login = ({ login, isAuthenticated }) => {
                     />
                 </div>
                 <div className='form-group'>
-                    <label className='form-label mt-3'>Password: </label>
+                    <label className='form-label mt-3'>{t('Login.password')}: </label>
                     <input
                         className='form-control'
                         type='password'
-                        placeholder='Password*'
+                        placeholder={t("Login.password") + "*"}
                         name='password'
                         onChange={e => onChange(e)}
                         value={password}
@@ -54,11 +60,13 @@ const Login = ({ login, isAuthenticated }) => {
                         required
                     />
                 </div>
-                <button className='btn btn-primary mt-3' type='submit'>Login</button>
+                <button className='btn btn-primary mt-3' type='submit'>{t('Login.login')}</button>
             </form>
+        {/*
             <p className='mt-3'>
-                Don't have an Account? <Link to='/register'>Sign Up</Link>
+                {t('Login.dontHave')} <Link to='/register'>{t('Login.register')}</Link>
             </p>
+        */}
         </div>
     );
 };

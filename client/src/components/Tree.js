@@ -48,7 +48,6 @@ export function TreeGraph({tree}) {
   const foreignObjectProps = { width: nodeSize.x, height: nodeSize.y, x: -100 };
 
   const makeTree = (familyData, ) => (
-
     <Tree
       data={familyData}
       translate={translate}
@@ -64,7 +63,7 @@ export function TreeGraph({tree}) {
 
   return (
 
-    <div style={containerStyles} ref={containerRef}>
+    <div dir="ltr" style={containerStyles} ref={containerRef}>
       { typeof  tree.payload !== 'undefined' && tree.payload.length > 0
       ? makeTree(tree.payload)
       : makeTree({}) }

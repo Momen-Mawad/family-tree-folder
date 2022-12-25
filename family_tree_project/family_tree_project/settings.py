@@ -41,8 +41,6 @@ CORS_ALLOWED_ORIGINS = [
     'http://ec2-44-208-33-172.compute-1.amazonaws.com'
 ]
 
-CORS_ALLOW_HEADERS = ['*']
-
 # Application definition
 
 INSTALLED_APPS = [
