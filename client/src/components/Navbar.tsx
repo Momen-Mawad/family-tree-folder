@@ -64,7 +64,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
 
   return (
     <nav>
-      <div className='nav-center'>
+      <div className='nav-center' dir={i18n.dir()}>
         <div className='nav-header'>
           <Link to='/'>
             <img src={logo} className='logo' alt='logo' />

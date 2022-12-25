@@ -17,12 +17,10 @@ import { Select } from 'antd';
 
 export const LanguageSelect = ( i18n: any ) => {
   const { Option } = Select;
-  document.body.dir = i18n.dir();
 
   const onLanguageChange = (lang: string) => {
     if (i18n) {
       i18n.changeLanguage(lang);
-      document.body.dir = i18n.dir();
     }
   };
 
