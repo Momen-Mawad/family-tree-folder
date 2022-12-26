@@ -122,7 +122,7 @@ DATABASES = {
     }
 }
 
-SESSION_COOKIE_HTTPONLY = False
+SESSION_COOKIE_HTTPONLY = True
 
 
 # Password validation
