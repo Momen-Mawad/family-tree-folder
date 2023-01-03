@@ -49,30 +49,31 @@ INSTALLED_APPS = [
 ]
 
 ALLOWED_HOSTS = [
-    'ec2-44-208-33-172.compute-1.amazonaws.com',
-    'localhost'
+    '44.208.33.172',
+    'localhost',
+    'family-tree.me'
 ]
 
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:8000',
-    'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000',
-    'http://44.208.33.172:8000'
+    'http://44.208.33.172',
+    'http://family-tree.me',
 ]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
-    'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000',
-    'http://44.208.33.172:8000'
+    'http://44.208.33.172',
+    'http://family-tree.me'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:8000',
-    'http://ec2-44-208-33-172.compute-1.amazonaws.com:8000',
-    'http://44.208.33.172:8000'
+    'http://44.208.33.172',
+    'http://family-tree.me'
 ]
 
 CORS_ALLOW_CREDENTIALS = True

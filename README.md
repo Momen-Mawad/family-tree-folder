@@ -43,5 +43,6 @@ docker push nexus.terrestris.de/wwfch_firieval/orchestrator:1.0.0
 docker push nexus.terrestris.de/wwfch_firieval/orchestrator:latest
 
 docker build -t momen3/momenrepo .
+docker run momen3/momenrepo
 docker push momen3/momenrepo:latest
 ```
