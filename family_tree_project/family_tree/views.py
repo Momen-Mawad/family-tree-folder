@@ -4,7 +4,6 @@ from .serializers import FamilySerializer, PersonSerializer, DPersonSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import permissions
-from dynamic_rest.viewsets import DynamicModelViewSet
 
 
 from django.contrib.auth import get_user_model
@@ -92,15 +91,3 @@ class GetFamiliesView(viewsets.ModelViewSet):
             return Response(families.data)
         else:
             return Response(status=401)
-
-
-class DPersonView(DynamicModelViewSet):
-    serializer_class = DPersonSerializer
-    queryset = Person.objects.all().reverse()
-
-
-from dynamic_rest.fields import DynamicRouter
-
-
-router = DynamicRouter()
-router.register('/dperson', DPersonView)
