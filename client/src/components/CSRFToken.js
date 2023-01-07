@@ -8,7 +8,6 @@ const CSRFToken = () => {
 
     const getCookie = (name) => {
         let cookieValue = null;
-        console.log(document.cookie)
         if (document.cookie && document.cookie !== '') {
             let cookies = document.cookie.split(';');
             for (let i = 0; i < cookies.length; i++) {
