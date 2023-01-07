@@ -3,11 +3,11 @@ from family_tree.models import Person, Family
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
-F_PK = 1
+F_PK = 2
 
 
 def populate_person():
-    path = 'data_no_partner.csv'
+    path = 'data_small.csv'
     with open(path, encoding="utf8") as f:
         reader = csv.reader(f)
         for row in reader:

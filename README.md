@@ -13,7 +13,6 @@ curl -H "Content-Type: application/json" -d '{"id":"2", "name":"Muna","partner":
 curl --user momen30:123456 -H "Content-Type: application/json" -d '{"id":"2", "name":"Munaaaa","partner":"Abdullah","family":"1"}' -X PUT http://127.0.0.1:8000/person/
 
 
-
 exec(open("populate.py").read())
 
 {
