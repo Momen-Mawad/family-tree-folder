@@ -10,10 +10,24 @@ const mapStateToProps = state => ({
   tree: state.tree
 });
 
+const renderRectSvgNode = ({ nodeDatum, toggleNode }) => (
+  <g>
+    <rect width="20" height="20" x="-10" onClick={toggleNode} />
+    <text fill="black" strokeWidth="1" x="20">
+      {nodeDatum.name}
+    </text>
+    {nodeDatum.attributes?.department && (
+      <text fill="black" x="20" dy="20" strokeWidth="1">
+        Department: {nodeDatum.attributes?.department}
+      </text>
+    )}
+  </g>
+);
+
 
 export function TreeGraph({tree}) {
 
-    const containerStyles = {
+  const containerStyles = {
     width: "100vw",
     height: "100vh"
   };
@@ -47,26 +61,26 @@ export function TreeGraph({tree}) {
   const nodeSize = { x: 200, y: 200 };
   const foreignObjectProps = { width: nodeSize.x, height: nodeSize.y, x: -100 };
 
-  const makeTree = (familyData, ) => (
+  const makeTree = (familyData, CustomNodeElementFunction) => {
+    console.log(nodeSize);
+    return (
     <Tree
       data={familyData}
       translate={translate}
-      nodeSize={nodeSize}
-      renderCustomNodeElement={(rd3tProps) =>
-        renderForeignObjectNode({ ...rd3tProps, foreignObjectProps })
-      }
+      nodeSize={{ x: 200, y: 200 }}
+      renderCustomNodeElement={CustomNodeElementFunction}
       pathFunc="step"
       initialDepth="1"
       orientation="vertical"
     />
-  );
+  );}
 
   return (
 
     <div dir="ltr" style={containerStyles} ref={containerRef}>
       { typeof  tree.payload !== 'undefined' && tree.payload.length > 0
-      ? makeTree(tree.payload)
-      : makeTree({}) }
+      ? makeTree(tree.payload, renderRectSvgNode)
+      : makeTree({}, renderRectSvgNode) }
     </div>
   );
 }
