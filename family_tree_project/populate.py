@@ -52,6 +52,10 @@ print(Person.objects.filter(family=Family.objects.get(pk=F_PK)).delete()); popul
 # delete all objects
 #Person.objects.all().delete()
 #print(Person.objects.filter(family=Family.objects.get(pk=F_PK)).delete())
+# User.objects.get(username='amushli')
+# user = User.objects.get(username='amushli')
+# user.username = 'almushli'
+# user.save()
 
 # create a user
 #user = User.objects.create_user('Momen', '1'); user.save()
