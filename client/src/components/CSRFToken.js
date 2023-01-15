@@ -25,7 +25,7 @@ const CSRFToken = () => {
         const fetchData = async () => {
             try {
                 await axios.get(
-                `${process.env.REACT_APP_API_URL}/authentication/csrf_cookie`,
+                `${process.env.REACT_APP_API_URL}/authentication/csrf_cookie/`,
                );
 
             } catch (err) {

@@ -18,7 +18,7 @@ export const load_tree = () => async dispatch => {
 
     try {
         const res = await axios.get(
-        `${process.env.REACT_APP_API_URL}/tree/person`,
+        `${process.env.REACT_APP_API_URL}/tree/person/`,
         config
         );
 

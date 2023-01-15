@@ -24,7 +24,7 @@ export const checkAuthenticated = () => async dispatch => {
 
     try {
         const res = await axios.get(
-        `${process.env.REACT_APP_API_URL}/authentication/authenticated`,
+        `${process.env.REACT_APP_API_URL}/authentication/authenticated/`,
          config);
 
         if (res.data.error || res.data.isAuthenticated === 'error') {
