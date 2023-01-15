@@ -7,6 +7,10 @@ import App from './App';
 import './i18n';
 
 
+const rootElement = document.getElementById("root");
 ReactDOM.render(
-    <App />, document.getElementById('root')
-  );
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  rootElement
+);

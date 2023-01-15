@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Family, Person
 from django.contrib.auth import get_user_model
+from rest_framework_recursive.fields import RecursiveField
 
 
 User = get_user_model()
@@ -13,13 +14,15 @@ class FamilySerializer(serializers.ModelSerializer):
 
 
 class PersonSerializer(serializers.ModelSerializer):
+    children = RecursiveField(many=True)
 
     class Meta:
         model = Person
-        #fields = ['id', 'name', 'parent', 'partner', 'img', 'family', 'children']
         fields = ['pk', 'name', 'children']
 
-    def get_fields(self):
-        fields = super(PersonSerializer, self).get_fields()
-        fields['children'] = PersonSerializer(many=True)
-        return fields
+    def to_representation(self, instance):
+        response = super().to_representation(instance)
+        response["children"] = sorted(response["children"],
+                                      key=lambda x: x["pk"],
+                                      reverse=True)
+        return response

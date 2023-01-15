@@ -26,8 +26,8 @@ exec(open("populate.py").read())
 "username": "momen30",
 "password": "1"
 }
-
-docker build -t family-appmom
+Z2PToSuoTNn3l8N8
+docker build -t family-app
 
 COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.yaml build
 

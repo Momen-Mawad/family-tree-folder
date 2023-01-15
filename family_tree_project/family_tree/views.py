@@ -20,36 +20,10 @@ class PersonView(viewsets.ModelViewSet):
             family = Family.objects.get(user=user)
             queryset = Person.objects.filter(family=family.id)
             serializer = PersonSerializer(queryset, many=True)
-
-            # sorting first generation
-            for key, value in enumerate(serializer.data):
-                child_list_1 = value['children']
-                child_list_sorted_1 = sorted(child_list_1, key=lambda d: d["pk"], reverse=True)
-                serializer.data[key]['children'] = child_list_sorted_1
-
-                # sorting second generation
-                for key2, value2 in enumerate(serializer.data[key]['children']):
-                    child_list_2 = value2['children']
-                    child_list_sorted_2 = sorted(child_list_2, key=lambda d: d["pk"], reverse=True)
-                    serializer.data[key]['children'][key2]['children'] = child_list_sorted_2
-
-                    # sorting third generation
-                    for key3, value3 in enumerate(serializer.data[key]['children'][key2]['children']):
-                        child_list_3 = value3['children']
-                        child_list_sorted_3 = sorted(child_list_3, key=lambda d: d["pk"], reverse=True)
-                        serializer.data[key]['children'][key2]['children'][key3]['children'] = child_list_sorted_3
-
-                        # sorting fourth generation
-                        for key4, value4 in enumerate(serializer.data[key]['children'][key2]['children'][key3]['children']):
-                            child_list_4 = value4['children']
-                            child_list_sorted_4 = sorted(child_list_4, key=lambda d: d["pk"], reverse=True)
-                            serializer.data[key]['children'][key2]['children'][key3]['children'][key4]['children'] = child_list_sorted_4
-
             return Response(serializer.data)
 
         except Exception as e:
-            return Response({
-                'result': str(user)})
+            return Response({'result': str(user)})
 
     def update(self, request):
         try:

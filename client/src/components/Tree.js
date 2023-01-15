@@ -5,50 +5,28 @@ import "./Tree.css";
 import Cookies from 'js-cookie';
 import { load_tree } from '../actions/tree';
 import { connect } from 'react-redux';
+import orgChartJson from '../data'
 
 const mapStateToProps = state => ({
   tree: state.tree
 });
 
-const renderRectSvgNode = ({ nodeDatum, toggleNode }) => (
-  <g>
-    <rect width="20" height="20" x="-10" onClick={toggleNode} />
-    <text fill="black" strokeWidth="1" x="20">
-      {nodeDatum.name}
-    </text>
-    {nodeDatum.attributes?.department && (
-      <text fill="black" x="20" dy="20" strokeWidth="1">
-        Department: {nodeDatum.attributes?.department}
-      </text>
-    )}
-  </g>
-);
-
-
 export function TreeGraph({tree}) {
 
-  const containerStyles = {
-    width: "100vw",
-    height: "100vh"
-  };
-
-  // Here we're using `renderCustomNodeElement` render a component that uses
-  // both SVG and HTML tags side-by-side.
-  // This is made possible by `foreignObject`, which wraps the HTML tags to
-  // allow for them to be injected into the SVG namespace.
   const renderForeignObjectNode = ({
     nodeDatum,
     toggleNode,
     foreignObjectProps
   }) => (
     <g>
-      <circle r={20}></circle>
+      <circle r={15}></circle>
       {/* `foreignObject` requires width & height to be explicitly set. */}
       <foreignObject {...foreignObjectProps}>
-        <div>
+        <div style={{ border: "1px solid black", backgroundColor: "#dedede" }}>
+          <h3 style={{ textAlign: "center" }}>{nodeDatum.name}</h3>
           {nodeDatum.children && (
             <button style={{ width: "100%" }} onClick={toggleNode}>
-                {nodeDatum.name}
+              {nodeDatum.__rd3t.collapsed ? "Expand" : "Collapse"}
             </button>
           )}
         </div>
@@ -56,31 +34,34 @@ export function TreeGraph({tree}) {
     </g>
   );
 
-
-  const [translate, containerRef] = useCenteredTree();
-  const nodeSize = { x: 200, y: 200 };
-  const foreignObjectProps = { width: nodeSize.x, height: nodeSize.y, x: -100 };
-
-  const makeTree = (familyData, CustomNodeElementFunction) => {
-    console.log(nodeSize);
+  const makeTree = (familyData, foreignObjectProps) => {
     return (
     <Tree
       data={familyData}
       translate={translate}
-      nodeSize={{ x: 200, y: 200 }}
-      renderCustomNodeElement={CustomNodeElementFunction}
+      nodeSize={nodeSize}
+      renderCustomNodeElement={(rd3tProps) =>
+        renderForeignObjectNode({ ...rd3tProps, foreignObjectProps })
+      }
       pathFunc="step"
       initialDepth="1"
       orientation="vertical"
     />
-  );}
+    )
+  };
+
+  const [translate, containerRef] = useCenteredTree();
+  const nodeSize = { x: 100, y: 100 };
+  const containerStyles = {
+    width: "100vw",
+    height: "100vh"
+  };
 
   return (
-
     <div dir="ltr" style={containerStyles} ref={containerRef}>
       { typeof  tree.payload !== 'undefined' && tree.payload.length > 0
-      ? makeTree(tree.payload, renderRectSvgNode)
-      : makeTree({}, renderRectSvgNode) }
+      ? makeTree(tree.payload)
+      : makeTree({}) }
     </div>
   );
 }

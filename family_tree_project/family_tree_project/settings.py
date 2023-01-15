@@ -29,7 +29,6 @@ SECRET_KEY = 'django-insecure-kn0l&1n^y!^v1#v8x9cr8mx3#d1+%)_!bng4tq)-=%eofs%pjn
 DEBUG = True
 
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -51,7 +50,7 @@ INSTALLED_APPS = [
 ALLOWED_HOSTS = [
     '44.208.33.172',
     'localhost',
-    'family-tree.me'
+    'family-tree.me:8000'
 ]
 
 
@@ -59,21 +58,21 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://44.208.33.172',
-    'http://family-tree.me',
+    'http://family-tree.me:8000',
 ]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://44.208.33.172',
-    'http://family-tree.me'
+    'http://family-tree.me:8000'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://44.208.33.172',
-    'http://family-tree.me'
+    'http://family-tree.me:8000'
 ]
 
 CORS_ALLOW_CREDENTIALS = True
