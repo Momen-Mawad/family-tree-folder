@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 ALLOWED_HOSTS = [
     '44.208.33.172',
     'localhost',
+    'backendserver',
     'family-tree.me'
 ]
 
