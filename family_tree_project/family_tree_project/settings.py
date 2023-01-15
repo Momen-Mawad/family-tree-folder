@@ -60,20 +60,32 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',
     'http://44.208.33.172',
     'http://family-tree.me:8000',
+    'https://localhost:3000',
+    'https://localhost:8000',
+    'https://44.208.33.172',
+    'https://family-tree.me:8000'
 ]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://44.208.33.172',
-    'http://family-tree.me:8000'
+    'http://family-tree.me:8000',
+    'https://localhost:3000',
+    'https://localhost:8000',
+    'https://44.208.33.172',
+    'https://family-tree.me:8000'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://44.208.33.172',
-    'http://family-tree.me:8000'
+    'http://family-tree.me:8000',
+    'https://localhost:3000',
+    'https://localhost:8000',
+    'https://44.208.33.172',
+    'https://family-tree.me:8000'
 ]
 
 CORS_ALLOW_CREDENTIALS = True
