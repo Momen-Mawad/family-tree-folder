@@ -20,7 +20,7 @@
     "i18next-http-backend": "^2.1.1",
     "js-cookie": "^3.0.1",
     "react": "^16.14.0",
-    "react-d3-tree": "^1.17.1",
+    "react-d3-tree": "^3.3.2",
     "react-dom": "^16.14.0",
     "react-family-tree": "^3.2.0",
     "react-i18next": "^12.1.1",

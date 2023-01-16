@@ -17,7 +17,9 @@ export function TreeGraph({tree}) {
     nodeDatum,
     toggleNode,
     foreignObjectProps
-  }) => (
+  }) => {
+  console.log("renderForeignObjectNode")
+  return (
     <g>
       <circle r={15}></circle>
       {/* `foreignObject` requires width & height to be explicitly set. */}
@@ -32,17 +34,18 @@ export function TreeGraph({tree}) {
         </div>
       </foreignObject>
     </g>
-  );
+    )
+  };
 
   const makeTree = (familyData, foreignObjectProps) => {
-    return (
+  return (
     <Tree
       data={familyData}
       translate={translate}
       nodeSize={nodeSize}
-      renderCustomNodeElement={(rd3tProps) =>
+      renderCustomNodeElement={(rd3tProps) => {
         renderForeignObjectNode({ ...rd3tProps, foreignObjectProps })
-      }
+      }}
       pathFunc="step"
       initialDepth="1"
       orientation="vertical"
