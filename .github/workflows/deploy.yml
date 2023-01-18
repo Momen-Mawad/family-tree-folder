@@ -47,7 +47,7 @@ jobs:
 
   job_three:
     name: Run docker container
-    needs: job_one, job_two
+    needs: [job_one, job_two]
     runs-on: ubuntu-latest
 
     steps:
