@@ -31,13 +31,12 @@ jobs:
 
   job_two:
     name: Upload media files
-    needs: job_one
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@master
       - name: Deploy in EC2
-        uses: appleboy/ssh-action@master
+        uses: appleboy/scp-action@master
         with:
           host : ${{ secrets.HOST_DNS  }}
           username : ${{ secrets.USER_NAME  }}
@@ -48,7 +47,7 @@ jobs:
 
   job_three:
     name: Run docker container
-    needs: job_two
+    needs: job_one, job_two
     runs-on: ubuntu-latest
 
     steps:
