@@ -18,7 +18,7 @@ class PersonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Person
-        fields = ['pk', 'name', 'children']
+        fields = ['pk', 'name', 'children', 'img']
 
     def to_representation(self, instance):
         response = super().to_representation(instance)

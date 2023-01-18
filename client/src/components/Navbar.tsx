@@ -12,7 +12,6 @@ import Socialbar from './Socialbar'
 import { connect } from 'react-redux';
 import { logout } from '../actions/Auth';
 import LanguageSelect from './LanguageSelect/LanguageSelect';
-import i18n from '../i18n';
 
 const Navbar = ({ isAuthenticated, logout }) => {
 

@@ -21,7 +21,7 @@ class Person(models.Model):
     parent = models.ForeignKey('Person', null=True, blank=True,
                                on_delete=models.CASCADE, related_name='children')
     partner = models.CharField("Partner ID", max_length=20, blank=True)
-    img = models.IntegerField(null=True, blank=True)
+    img = models.ImageField("Image", upload_to=None, null=True, blank=True)
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
 
     def __str__(self):

@@ -18,7 +18,7 @@ def populate_person():
                     name=row[1],
                     parent=Person.objects.get(id_F=row[2], family=Family.objects.get(pk=F_PK)),
                     #partner=row[3],
-                    img=row[0],
+                    img=f"{Family.objects.get(pk=F_PK)}_{row[0]}",
                     family=Family.objects.get(pk=F_PK)
                     )
             else:
@@ -28,7 +28,7 @@ def populate_person():
                     id_F=row[0],
                     name=row[1],
                     #partner=row[3],
-                    img=row[0],
+                    img=f"{Family.objects.get(pk=F_PK)}_{row[0]}",
                     family=Family.objects.get(pk=F_PK)
                     )
             print(Person.objects.get(id_F=row[0], family=Family.objects.get(pk=F_PK)).id)

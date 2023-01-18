@@ -18,7 +18,8 @@ from django.urls import path, re_path
 from django.urls import include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.shortcuts import render
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 def render_react(request):
     return render(request, "index.html")
@@ -33,3 +34,4 @@ urlpatterns = [
 ]
 
 urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

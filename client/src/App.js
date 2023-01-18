@@ -13,13 +13,9 @@ import store from './Store';
 
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import i18n from './i18n';
 
 
 const App = () => {
-
-  console.log("DKMM")
-
   return (
     <Suspense fallback={<Spin indicator={<LoadingOutlined spin />} />}>
       <Provider store={store}>
