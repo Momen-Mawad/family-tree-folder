@@ -7,7 +7,7 @@ F_PK = 2
 
 
 def populate_person():
-    path = 'family_tables/data_small.csv'
+    path = 'family_tables/data_test.csv'
     with open(path, encoding="utf8") as f:
         reader = csv.reader(f)
         for row in reader:
