@@ -39,7 +39,7 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
-    "build": "rm -rf ../family_tree_project/build && react-scripts --openssl-legacy-provider build && cp -r build ../family_tree_project/build && rm -rf ../family_tree_project/static && python ../family_tree_project/manage.py collectstatic",
+    "build": "rm -rf ../family_tree_project/build && react-scripts --openssl-legacy-provider build && cp -r build ../family_tree_project/build && rm -rf ../family_tree_project/static && python ../family_tree_project/manage.py collectstatic && bash ../upload_media.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

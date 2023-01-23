@@ -22,11 +22,6 @@ exec(open("populate.py").read())
 "family_name": "",
 }
 
-{
-"username": "momen30",
-"password": "1"
-}
-Z2PToSuoTNn3l8N8
 docker build -t family-app
 
 COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.yaml build
@@ -45,3 +40,13 @@ docker build -t momen3/momenrepo .
 docker run momen3/momenrepo
 docker push momen3/momenrepo:latest
 ```
+
+server {
+    server_name http://127.0.0.1;
+    listen 8181;
+    location / {
+         root /home/ec2-user;
+         allow 127.0.0.1;
+         deny all;
+    }
+}

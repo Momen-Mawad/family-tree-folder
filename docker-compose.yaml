@@ -1,8 +1,0 @@
-services:
-  client:
-    build: ./family_tree_project
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./family_tree_project:/family_tree_project
-    command: bash -c "python manage.py runserver 0.0.0.0:8000"
