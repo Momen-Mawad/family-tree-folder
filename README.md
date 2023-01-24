@@ -28,6 +28,7 @@ COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.ya
 
 docker-compose -f docker-compose.yaml up
 
+ssh -i "Keymaster.pem" ec2-user@ec2-44-208-33-172.compute-1.amazonaws.com
 
 ```
 cd orchestrator/
