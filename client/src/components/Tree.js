@@ -17,7 +17,7 @@ export function TreeGraph({tree}) {
       {/* `foreignObject` requires width & height to be explicitly set. */}
       <foreignObject {...{ width: 50, height: 110, x: -27 , y: -40}}>
         <div style={{ border: "1px solid black", backgroundColor: "#dedede"}}>
-            <img src="http://family-tree.me:8181/media/Momen_109.jpeg" width="50" height="110"/>
+            <img src="https://family-tree.me/media/Momen_109.jpeg" width="50" height="110"/>
             <button style={{ fontSize: "10px",  width: "100%" }} onClick={toggleNode}>
               {nodeDatum.name}
             </button>
