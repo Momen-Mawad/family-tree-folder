@@ -16,10 +16,10 @@ export function TreeGraph({tree}) {
     <g>
       <circle r={5}></circle>
       {/* `foreignObject` requires width & height to be explicitly set. */}
-      <foreignObject {...{ width: 50, height: 110, x: -27 , y: -40}}>
+      <foreignObject {...{ width: 50, height: 95, x: -27 , y: -47}}>
         <div style={{ border: "1px solid black", backgroundColor: "#dedede"}}>
             <img src={`${process.env.REACT_APP_MEDIA_URL}${nodeDatum.img}.jpeg`}/>
-            <button style={{ fontSize: "10px",  width: "100%" }} onClick={toggleNode}>
+            <button onClick={toggleNode}>
               {nodeDatum.name}
             </button>
         </div>

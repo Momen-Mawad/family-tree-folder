@@ -262,8 +262,3 @@ body {
 #root {
   height: 100%;
 }
-
-img {
-    width : 25px;
-    height: auto; /*to preserve the aspect ratio of the image*/
-}
