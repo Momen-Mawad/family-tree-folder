@@ -18,7 +18,7 @@ export function TreeGraph({tree}) {
       {/* `foreignObject` requires width & height to be explicitly set. */}
       <foreignObject {...{ width: 50, height: 110, x: -27 , y: -40}}>
         <div style={{ border: "1px solid black", backgroundColor: "#dedede"}}>
-            <img src={`${process.env.REACT_APP_MEDIA_URL}/media/${nodeDatum.img}.jpeg`} width="100" height="200"/>
+            <img src={`${process.env.REACT_APP_MEDIA_URL}${nodeDatum.img}.jpeg`} width="100" height="200"/>
             <button style={{ fontSize: "10px",  width: "100%" }} onClick={toggleNode}>
               {nodeDatum.name}
             </button>
