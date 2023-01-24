@@ -11,20 +11,22 @@ const mapStateToProps = state => ({
 
 export function TreeGraph({tree}) {
 
-  const renderRectSvgNode = ({ nodeDatum, toggleNode }) => (
+  const renderRectSvgNode = ({ nodeDatum, toggleNode }) => {
+  console.log(nodeDatum.name)
+  return (
     <g>
       <circle r={5}></circle>
       {/* `foreignObject` requires width & height to be explicitly set. */}
       <foreignObject {...{ width: 50, height: 110, x: -27 , y: -40}}>
         <div style={{ border: "1px solid black", backgroundColor: "#dedede"}}>
-            <img src={process.env.REACT_APP_API_URL+"/media/Momen_109.jpeg"} width="50" height="110"/>
+            <img src={process.env.MEDIA_API_URL+"/media/Momen_109.jpeg"} width="100" height="200"/>
             <button style={{ fontSize: "10px",  width: "100%" }} onClick={toggleNode}>
               {nodeDatum.name}
             </button>
         </div>
       </foreignObject>
     </g>
-  );
+  )};
 
   const [translate, containerRef] = useCenteredTree();
   const containerStyles = {
