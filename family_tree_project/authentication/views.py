@@ -55,6 +55,7 @@ class SignupView(APIView):
                         family = Family.objects.create(user=user,
                                                        name=family_name)
                         family.save()
+                        
                         return Response({
                             'success': 'Family created successfully'})
             else:
