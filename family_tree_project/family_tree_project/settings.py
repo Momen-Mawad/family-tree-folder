@@ -49,7 +49,7 @@ INSTALLED_APPS = [
 ]
 
 ALLOWED_HOSTS = [
-    '44.208.33.172',
+    '18.159.113.152',
     'localhost',
     'backendserver',
     'family-tree.me'
@@ -59,33 +59,33 @@ ALLOWED_HOSTS = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:8000',
-    'http://44.208.33.172',
+    'http://18.159.113.152',
     'http://family-tree.me:8000',
     'https://localhost:3000',
     'https://localhost:8000',
-    'https://44.208.33.172',
+    'https://18.159.113.152',
     'https://family-tree.me:8000'
 ]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
-    'http://44.208.33.172',
+    'http://18.159.113.152',
     'http://family-tree.me:8000',
     'https://localhost:3000',
     'https://localhost:8000',
-    'https://44.208.33.172',
+    'https://18.159.113.152',
     'https://family-tree.me:8000'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:8000',
-    'http://44.208.33.172',
+    'http://18.159.113.152',
     'http://family-tree.me:8000',
     'https://localhost:3000',
     'https://localhost:8000',
-    'https://44.208.33.172',
+    'https://18.159.113.152',
     'https://family-tree.me:8000'
 ]
 
@@ -170,7 +170,6 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_PASSWORD_VALIDATORS = []
 
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -201,7 +200,6 @@ LOGIN_REDIRECT_URL = '/family_tree/tree_page'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 
 REST_FRAMEWORK = {
