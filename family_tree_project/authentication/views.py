@@ -11,6 +11,7 @@ from django.utils.decorators import method_decorator
 User = get_user_model()
 
 
+# Django class to check if user is authenticated
 class CheckAuthenticatedView(APIView):
     def get(self, request, format=None):
         user = self.request.user

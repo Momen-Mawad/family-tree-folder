@@ -25,6 +25,7 @@ exec(open("populate.py").read())
 docker build -t family-app
 
 COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.yaml build
+docker-compose -f docker-compose.yml up -d
 
 docker-compose -f docker-compose.yaml up
 

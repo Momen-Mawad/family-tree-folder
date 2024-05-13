@@ -33,7 +33,7 @@ def populate_person():
                     )
             print(Person.objects.get(id_F=row[0], family=Family.objects.get(pk=F_PK)).id)
 
-print(Person.objects.filter(family=Family.objects.get(pk=F_PK)).delete()); populate_person();
+#print(Person.objects.filter(family=Family.objects.get(pk=F_PK)).delete()); populate_person();
 
 #print(Person.objects.filter(id_F=0, family=Family.objects.get(pk=2)).exists())
 
@@ -43,6 +43,8 @@ print(Person.objects.filter(family=Family.objects.get(pk=F_PK)).delete()); popul
 #print(Person.objects.filter(id_F=1, family=Family.objects.get(pk=F_PK))[0].family.id)
 #print(Family.objects.all())
 #print(Person.objects.all())
+#print(User.objects.all())
+#print(User.objects.get())
 #print(len(Person.objects.all().filter(family=Family.objects.get(pk=2))))
 #print(Family.objects.get(pk=F_PK))
 # for i in Family.objects.all():
@@ -52,10 +54,10 @@ print(Person.objects.filter(family=Family.objects.get(pk=F_PK)).delete()); popul
 # delete all objects
 #Person.objects.all().delete()
 #print(Person.objects.filter(family=Family.objects.get(pk=F_PK)).delete())
-# User.objects.get(username='amushli')
-# user = User.objects.get(username='amushli')
-# user.username = 'almushli'
-# user.save()
+#print(User.objects.filter(is_staff=True))
+#user = User.objects.get(username='Momen')
+#user.save()
+
 
 # create a user
 #user = User.objects.create_user('Momen', '1'); user.save()

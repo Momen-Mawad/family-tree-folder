@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'family_tree',
+    'django_keycloak.apps.KeycloakAppConfig',
 ]
 
 ALLOWED_HOSTS = [
@@ -105,9 +106,16 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "django.middleware.common.CommonMiddleware",
+    'django_keycloak.middleware.BaseKeycloakMiddleware',
 ]
 
 ROOT_URLCONF = 'family_tree_project.urls'
+
+# AUTHENTICATION_BACKENDS = [
+#     'django_keycloak.auth.backends.KeycloakAuthorizationCodeBackend',
+# ]
+#
+# LOGIN_URL = 'keycloak_login'
 
 TEMPLATES = [
     {
@@ -158,6 +166,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_PASSWORD_VALIDATORS = []
+
 
 
 # Internationalization
@@ -237,3 +248,5 @@ SIMPLE_JWT = {
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+KEYCLOAK_OIDC_PROFILE_MODEL = 'django_keycloak.OpenIdConnectProfile'

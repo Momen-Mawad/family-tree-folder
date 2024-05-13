@@ -21,6 +21,7 @@ from django.shortcuts import render
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 def render_react(request):
     return render(request, "index.html")
 
@@ -31,6 +32,7 @@ urlpatterns = [
     path('tree/', include("family_tree.urls")),
     re_path(r"^$", render_react),
     re_path(r"^(?:.*)/?$", render_react),
+    path(r'keycloak/', include('django_keycloak.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
