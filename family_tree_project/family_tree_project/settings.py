@@ -26,7 +26,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-kn0l&1n^y!^v1#v8x9cr8mx3#d1+%)_!bng4tq)-=%eofs%pjn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 # Application definition
@@ -52,7 +52,7 @@ ALLOWED_HOSTS = [
     '18.159.113.152',
     'localhost',
     'backendserver',
-    'family-tree.me'
+    'family-tree-app.com'
 ]
 
 
@@ -60,33 +60,33 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://18.159.113.152',
-    'http://family-tree.me:8000',
+    'http://family-tree-app.com:8000',
     'https://localhost:3000',
     'https://localhost:8000',
     'https://18.159.113.152',
-    'https://family-tree.me:8000'
+    'https://family-tree-app.com:8000'
 ]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://18.159.113.152',
-    'http://family-tree.me:8000',
+    'http://family-tree-app.com:8000',
     'https://localhost:3000',
     'https://localhost:8000',
     'https://18.159.113.152',
-    'https://family-tree.me:8000'
+    'https://family-tree-app.com:8000'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://18.159.113.152',
-    'http://family-tree.me:8000',
+    'http://family-tree-app.com:8000',
     'https://localhost:3000',
     'https://localhost:8000',
     'https://18.159.113.152',
-    'https://family-tree.me:8000'
+    'https://family-tree-app.com:8000'
 ]
 
 CORS_ALLOW_CREDENTIALS = True

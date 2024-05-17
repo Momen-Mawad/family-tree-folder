@@ -1,4 +1,3 @@
-
 curl -H "Content-Type: application/json" -d '{"username":"Mawad2","password":"1","password2":"1","family_name":"Mawad2"}' -X POST http://127.0.0.1:8000/authentication/register/
 
 curl -d '{"username":"momen30","password":"123456",}' -H "Content-Type: application/json" -X GET http://127.0.0.1:8000/person/
@@ -11,7 +10,6 @@ curl -H "Content-Type: application/json" -X DELETE http://127.0.0.1:8000/authent
 curl -H "Content-Type: application/json" -d '{"id":"2", "name":"Muna","partner":"Abdullah","family":"1"}' -X POST http://127.0.0.1:8000/person/
 
 curl --user momen30:123456 -H "Content-Type: application/json" -d '{"id":"2", "name":"Munaaaa","partner":"Abdullah","family":"1"}' -X PUT http://127.0.0.1:8000/person/
-
 
 exec(open("populate.py").read())
 
@@ -29,7 +27,7 @@ docker-compose -f docker-compose.yml up -d
 
 docker-compose -f docker-compose.yaml up
 
-ssh -i "Keymaster.pem" ec2-user@ec2-44-208-33-172.compute-1.amazonaws.com
+ssh -i "Keymaster.pem" ubuntu@ec2-18-159-113-152.eu-central-1.compute.amazonaws.com
 
 ```
 cd orchestrator/
@@ -42,13 +40,3 @@ docker build -t momen3/momenrepo .
 docker run momen3/momenrepo
 docker push momen3/momenrepo:latest
 ```
-
-server {
-    server_name http://127.0.0.1;
-    listen 8181;
-    location / {
-         root /home/ec2-user;
-         allow 127.0.0.1;
-         deny all;
-    }
-}
